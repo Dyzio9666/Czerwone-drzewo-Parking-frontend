@@ -1,0 +1,160 @@
+/*
+  Autor: Doświadczony Specjalista UX/UI
+  Styl: Nowoczesny (inspirowany Apple)
+  Przeznaczenie: Formularz logowania Angular Material
+*/
+
+/* --- 1. Globalne Ustawienia (Ciało Strony) --- */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Kluczowe dla estetyki Apple: Używamy fontu systemowego. 
+    Na urządzeniach Apple (macOS, iOS) będzie to San Francisco (SF Pro).
+    Na Windows będzie to Segoe UI, a na Androidzie Roboto.
+  */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Subtelne, jasnoszare tło, typowe dla tła aplikacji Apple */
+  background-color: #f5f5f7;
+
+  /* Główny kolor tekstu - nie czarny (#000), ale bardzo ciemny szary */
+  color: #1d1d1f;
+
+  /* Wygładzanie czcionek dla lepszej czytelności */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- 2. Kontener Formularza (Karta Logowania) --- */
+/* Celujemy w główny <div> z Twojego kodu */
+div {
+  background: #ffffff;
+  padding: 40px; /* Hojny "oddech" wewnątrz karty */
+  border-radius: 12px; /* Nowoczesne, zaokrąglone rogi */
+  
+  /* Bardzo subtelny, miękki cień, który unosi kartę nad tło */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  
+  max-width: 380px;
+  width: 100%;
+  box-sizing: border-box; /* Kluczowe dla poprawnego obliczania paddingu */
+  text-align: center;
+  
+  /* Używamy flexboxa do ładnego układania elementów wewnątrz */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spójne odstępy między polami, tekstem i przyciskiem */
+}
+
+/* --- 3. Pola Formularza (Nadpisanie Angular Material) --- */
+/*
+  WAŻNA UWAGA: Komponenty <mat-form-field> są skomplikowane.
+  Renderują wiele wewnętrznych elementów. Aby je poprawnie ostylować 
+  w "czystym CSS" i przebić się przez ich domyślne style, musimy
+  celować w klasy, które Angular sam generuje.
+
+  Jeśli wklejasz ten CSS do globalnego pliku (np. styles.css),
+  poniższy kod zadziała. Jeśli wklejasz go do pliku CSS komponentu,
+  musisz poprzedzić każdą regułę :host ::ng-deep
+*/
+
+/* Upewniamy się, że pole zajmuje 100% szerokości */
+mat-form-field {
+  width: 100%;
+}
+
+/* Stylizujemy obramowanie pola (zakładając 'appearance="outline"').
+  To jest najczęstszy i najnowocześniejszy wygląd.
+*/
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  /* Kolor obramowania w stanie spoczynku - subtelna szarość */
+  color: #d2d2d7 !important;
+  opacity: 1 !important;
+}
+
+/* Obramowanie w stanie :focus (po kliknięciu) */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  /* Główny kolor akcentu - klasyczny błękit Apple.
+    Używamy !important, aby mieć pewność nadpisania styli Material.
+  */
+  color: #007aff !important;
+}
+
+/* Etykieta (Label) */
+.mat-form-field .mat-label {
+  color: #8a8a8e; /* Kolor etykiety "Input" / "Password" */
+}
+
+/* Etykieta w stanie :focus */
+.mat-form-field.mat-focused .mat-label {
+  color: #007aff !important;
+}
+
+/* Właściwy <input> wewnątrz komponentu */
+input.mat-input-element {
+  color: #1d1d1f; /* Kolor tekstu wpisywanego przez użytkownika */
+  caret-color: #007aff; /* Kolor kursora (karetki) */
+}
+
+/* --- 4. Przycisk Główny (Call to Action) --- */
+button {
+  background-color: #007aff; /* Ten sam błękitny akcent */
+  color: white;
+  font-size: 17px;
+  
+  /* W Apple waga "Medium" (500) jest często używana dla przycisków */
+  font-weight: 500;
+  
+  border: none;
+  border-radius: 10px; /* Lekko mniejsze zaokrąglenie niż karta */
+  padding: 14px 20px; /* Wygodny, duży obszar klikalny */
+  width: 100%;
+  cursor: pointer;
+  
+  /* Płynne przejścia dla profesjonalnego wyglądu */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  
+  margin-top: 10px; /* Dodatkowy odstęp od pola hasła */
+}
+
+button:hover {
+  /* Lekko ciemniejszy odcień przy najechaniu myszką */
+  background-color: #0070e0;
+}
+
+button:active {
+  /* Subtelny efekt wciśnięcia przycisku */
+  transform: scale(0.98);
+  background-color: #0062c4;
+}
+
+/* --- 5. Teksty Pomocnicze i Linki --- */
+p {
+  font-size: 14px;
+  /* Drugorzędny kolor tekstu, mniej ważny niż inputy */
+  color: #6e6e73; 
+  margin: 0;
+}
+
+a {
+  color: #007aff; /* Link również używa koloru akcentu */
+  text-decoration: none; /* Usuwamy domyślne podkreślenie */
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  
+  /* Mały trik, aby wizualnie połączyć link z paragrafem powyżej */
+  margin-top: -8px; 
+}
+
+a:hover {
+  /* Zamiast podkreślenia, lekko zmniejszamy widoczność */
+  opacity: 0.75;
+}

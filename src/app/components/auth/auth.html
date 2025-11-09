@@ -1,0 +1,17 @@
+<body>
+    
+
+    <div>
+        <mat-form-field>
+            <mat-label>username</mat-label>
+            <input matInput  [(ngModel)]="username" placeholder="Username" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>password</mat-label>
+            <input matInput  [(ngModel)]="password" placeholder="password" type="password" >
+        </mat-form-field>  
+        <button (click)="login()">Zaloguj sie</button>
+        <p>If you dont have a account create one</p>
+        <a routerLink="register">Sign in</a>
+    </div>
+</body>

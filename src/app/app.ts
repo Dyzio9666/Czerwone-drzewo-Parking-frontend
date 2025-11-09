@@ -2,9 +2,10 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DatePicker } from './components/date-picker/date-picker';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Auth } from './components/auth/auth';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet ,DatePicker ],
+  imports: [RouterOutlet ,DatePicker , Auth],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers : [HttpClient , HttpClientModule]
