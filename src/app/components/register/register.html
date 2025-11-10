@@ -1,1 +1,21 @@
-<p>register works!</p>
+<body>
+    
+
+    <div>
+        <mat-form-field>
+            <mat-label>username</mat-label>
+            <input matInput  [(ngModel)]="username" placeholder="Username" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>password</mat-label>
+            <input matInput  [(ngModel)]="password" placeholder="password" type="password" >
+        </mat-form-field>  
+        <mat-form-field>
+            <mat-label> Repeat password</mat-label>
+            <input matInput  [(ngModel)]="password1" placeholder="password" type="password" >
+        </mat-form-field> 
+        <button (click)="register()">Register</button>
+        <p>If you have account login</p>
+        <a routerLink="/login">Login</a>
+    </div>
+</body>

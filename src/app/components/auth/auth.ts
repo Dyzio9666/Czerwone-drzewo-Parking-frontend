@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { authService } from '../../services/authservice';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 @Component({
   selector: 'app-auth',
   standalone : true,
@@ -16,7 +16,8 @@ import { RouterLink } from "@angular/router";
 })
 export class Auth {
   constructor(
-    private readonly authService :authService
+    private readonly authService :authService,
+    private readonly router : Router
   ){
 
   }
@@ -34,6 +35,7 @@ export class Auth {
         text : "You have logged Succesfully",
         icon : "success"
       })
+      this.router.navigate(['/date'])
     }
     catch(e)
     {
