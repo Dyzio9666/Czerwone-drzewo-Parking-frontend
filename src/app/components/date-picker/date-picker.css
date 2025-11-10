@@ -1,0 +1,97 @@
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+div {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  max-width: 380px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #d2d2d7 !important;
+  opacity: 1 !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #007aff !important; 
+}
+
+.mat-form-field .mat-label {
+  color: #8a8a8e;
+}
+
+
+.mat-form-field.mat-focused .mat-label {
+  color: #007aff !important;
+}
+
+
+input.mat-input-element {
+  color: #1d1d1f; 
+  caret-color: #007aff; 
+}
+
+
+.mat-hint {
+  color: #6e6e73; 
+}
+
+
+mat-datepicker-toggle .mat-icon {
+  color: #8a8a8e;
+}
+
+
+.mat-form-field.mat-focused mat-datepicker-toggle .mat-icon {
+  color: #007aff !important;
+}
+
+button {
+  background-color: #007aff;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 20px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px; 
+}
+
+button:hover {
+  background-color: #0070e0;
+}
+
+button:active {
+  transform: scale(0.98);
+  background-color: #0062c4;
+}

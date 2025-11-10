@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+import { sendDateInfo } from '../../services/sendDateInfoservice';
 
 @Component({
   selector: 'date-picker',
@@ -10,10 +12,19 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './date-picker.css',
 })
 export class DatePicker {
+  constructor(
+    private readonly router : Router,
+    private readonly currentDateService : sendDateInfo
+  ){
+
+  }
   @ViewChild('dateinput') date? : ElementRef 
   
 
   toggle(){
+    this.currentDateService.updateDateInfo(this.date?.nativeElement.value)
+    // console.log(this.currentDateService.currentDateValue$)
       console.log(this.date?.nativeElement.value)
+    this.router.navigate(['/place-picker'])
   }
 }
