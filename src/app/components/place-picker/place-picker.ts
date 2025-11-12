@@ -13,6 +13,7 @@ interface parkingSpace {
   styleUrl: './place-picker.css',
 })
 export class PlacePicker implements OnDestroy{
+
   constructor(
     private readonly reciveDateInfo : sendDateInfo
   ){
@@ -21,18 +22,22 @@ export class PlacePicker implements OnDestroy{
       this.parkingSpaces.push(new_parkingSpace)
     }
   }
-  Date : string = ''
+  Date : string | null= ''
    dateSubsription : Subscription | undefined;
   parkingSpaces : parkingSpace[] = []
   amountOfPlaces = 20;
   
     test(){
     this.dateSubsription = this.reciveDateInfo.currentDateValue$.subscribe(newDate =>{
-        console.log(newDate)
+        // console.log(newDate)
+        this.Date = newDate
     })
+    // console.log(this.Date)
   }
   
-  
+  selectPlace(){
+    
+  }
 
   ngOnDestroy(): void {
     if(this.dateSubsription){
