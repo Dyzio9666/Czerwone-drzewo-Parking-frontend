@@ -1,29 +1,33 @@
-<div class="parking-layout-card">
-  <h2>Wybierz miejsce parkingowe</h2>
+<body>
+    <div class="parking-layout-card">
+    <h2>Wybierz miejsce parkingowe</h2>
+    <div class="parking-grid">
 
-  <div class="parking-grid">
     @for(place of parkingSpaces ; track place){
     <div
-      class="parking-spot"
-      [class.taken]="place.isTaken"
-      [class.selected]="place.isSelected"
-      (click)="selectPlace()">
-      <p>{{place.id}}</p>
-    </div>
+    class="parking-spot"
+    [class.selected]="place.clicked === true"
+    [class.taken]="place.status === false && place.clicked === false"
+    (click)="selectPlace(place.id   )">
+        
+        <p>{{place.id}}</p>
+        </div>
+
     }
-  </div>
 
-  <div class="legend">
-    <div class="legend-item">
-      <span class="spot-example available"></span> Wolne
     </div>
-    <div class="legend-item">
-      <span class="spot-example taken"></span> Zajęte
+        <div class="legend">
+        <div class="legend-item">
+        <span class="spot-example available"></span> Wolne
+        </div>
+        <div class="legend-item">
+        <span class="spot-example taken"></span> Zajęte
+        </div>
+        <div class="legend-item">
+        <span class="spot-example selected"></span> Twój wybór
+        </div>
+        </div>
+    <button class="confirm-button">Potwierdź wybór</button>
     </div>
-    <div class="legend-item">
-      <span class="spot-example selected"></span> Twój wybór
-    </div>
-  </div>
+</body>
 
-  <button class="confirm-button">Potwierdź wybór</button>
-</div>
