@@ -24,7 +24,7 @@ export class PlacePicker implements OnDestroy , OnInit{
     private readonly reciveDateInfo : sendDateInfo,
     private readonly httpClient :  HttpClient
   ){
-    for(let i = 1 ;i <= this.amountOfPlaces;i++){
+    for(let i = 0 ;i < this.amountOfPlaces;i++){
       let new_parkingSpace : parkingSpace = {id : i , status : true , clicked :false}
       this.parkingSpaces.push(new_parkingSpace)
     }
@@ -45,12 +45,16 @@ export class PlacePicker implements OnDestroy , OnInit{
         this.Date =  newDate
     })
     console.log(this.Date)
-    this.httpClient.get<number[]>(`http://localhost:3000/reservation/avaible-places?date=10/11/2025` ).subscribe({
+    this.httpClient.get<number[]>(`http://localhost:3000/reservation/avaible-places?date=${this.Date}`,{
+      headers : header
+    } ).subscribe({
       next : (response =>{
         console.log(response)
         
         this.parkingSpaces.forEach(space =>{
-          if(this.taken_places.includes(space.id)){
+          
+          if(response.includes(space.id)){
+            
             space.status = false
           }
         })
@@ -59,6 +63,28 @@ export class PlacePicker implements OnDestroy , OnInit{
   
   selectPlace(placeId : number){
     this.parkingSpaces[placeId].clicked = !this.parkingSpaces[placeId].clicked
+  }
+
+  takePlace(){
+
+    const header = new HttpHeaders().set('Authorization' , `Bearer ${this.userJWT}`);
+    let id_of_taken_places : number = 0;
+    this.parkingSpaces.forEach(space =>{
+      if(space.clicked){
+        id_of_taken_places= space.id;
+      }
+    })
+    if (id_of_taken_places === 0){
+      return;
+    }
+    const new_reservation = {
+      madeByID : localStorage.getItem('user'),
+      date : this.Date,
+      placeChoosen : id_of_taken_places 
+    }
+    this.httpClient.post('http://localhost:3000/reservation/new-reservation' , new_reservation , {
+      headers : header
+    }).subscribe({})
   }
 
   ngOnDestroy(): void {
