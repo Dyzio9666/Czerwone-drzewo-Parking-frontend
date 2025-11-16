@@ -6,7 +6,7 @@ import { PlacePicker } from './components/place-picker/place-picker';
 
 export const routes: Routes = [
     {
-        path : 'login',
+        path : '',
         component : Auth
     },
     {

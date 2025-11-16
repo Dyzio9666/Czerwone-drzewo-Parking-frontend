@@ -1,7 +1,7 @@
 import { JsonPipe } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, tap } from "rxjs";
+import { BehaviorSubject, firstValueFrom, tap } from "rxjs";
 
 interface Apiresponse{
     
@@ -37,22 +37,35 @@ export class authService{
         })
     }
     
-    loginUser( username : string , password : string){
-        console.log('test')
-        this.httpClient.post<Apiresponse>('http://localhost:3000/auth/login', {username : username , password : password}).pipe(
-            tap(response => {
-                // console.log(response)
-                const username = response.username;
-                const accessToken = response.accessToken;
+async loginUser(username: string, password: string): Promise<boolean> {
+  try {
+    // 1. firstValueFrom zamienia Observable na Promise
+    // 2. await sprawia, że kod CZEKA tutaj na odpowiedź serwera
+    await firstValueFrom(
+      this.httpClient.post<Apiresponse>('http://localhost:3000/auth/login', { username, password }).pipe(
+        tap(response => {
+          // Ten kod wykona się, jeśli zapytanie się uda
+          const username = response.username;
+          const accessToken = response.accessToken;
 
-                if (username && accessToken){
-                    localStorage.setItem('user' ,username);
-                    localStorage.setItem('accessToken' , accessToken)
-                    this.currentSubject.next(username);
-                }
-            })
-        ).subscribe()
-    }
+          if (username && accessToken) {
+            localStorage.setItem('user', username);
+            localStorage.setItem('accessToken', accessToken);
+            this.currentSubject.next(username);
+          }
+        })
+      )
+    );
+
+    // Jeśli linia wyżej nie rzuciła błędu (nie weszła do catch), to znaczy że jest SUKCES
+    return true;
+
+  } catch (error) {
+    // Jeśli serwer zwróci błąd (np. 401), await rzuci wyjątek i trafimy tutaj
+    console.error("Błąd logowania:", error);
+    return false;
+  }
+}
 
     logout(){
         localStorage.removeItem('user');

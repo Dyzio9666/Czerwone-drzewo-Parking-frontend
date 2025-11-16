@@ -23,27 +23,31 @@ export class Auth {
   }
   username : string = ''
   password : string = ''
-  login(){
-    try {
+  async login(){
       
-      this.authService.loginUser(this.username,this.password)
-      this.username = ''
-      this.password = ''
-      console.log('Elo')
-      Swal.fire({
-        title:"Logged Succesfully",
-        text : "You have logged Succesfully",
-        icon : "success"
-      })
-      this.router.navigate(['/date'])
-    }
-    catch(e)
-    {
+      if (await this.authService.loginUser(this.username,this.password)){
+        this.username = ''
+        this.password = ''
+        console.log('Elo')
+        Swal.fire({
+          title:"Logged Succesfully",
+          text : "You have logged Succesfully",
+          icon : "success"
+        })
+        this.router.navigate(['/date'])
+      }else {
+        Swal.fire({
+          title:"Login Failed",
+          text : "Please check your credentials and try again",
+          icon : "error"
+        })
       
-      throw new Error("Invalid Credentials")
+      }
       
-    }
+      
     
+      
+      
     
   }
 }
