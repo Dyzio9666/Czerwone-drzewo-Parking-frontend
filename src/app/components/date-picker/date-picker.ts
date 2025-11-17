@@ -3,8 +3,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { sendDateInfo } from '../../services/sendDateInfoservice';
+import Swal from 'sweetalert2';
 
+import { sendDateInfo } from '../../services/sendDateInfoservice';
 @Component({
   selector: 'date-picker',
   imports: [MatFormField,MatInputModule,MatDatepickerModule],
@@ -24,7 +25,19 @@ export class DatePicker {
   toggle(){
     this.currentDateService.updateDateInfo(this.date?.nativeElement.value)
     // console.log(this.currentDateService.currentDateValue$)
-      console.log(this.date?.nativeElement.value)
-    this.router.navigate(['/place-picker'])
+    if(this.date?.nativeElement.value){
+      localStorage.setItem('selectedDate' , this.date?.nativeElement.value)   
+        this.router.navigate(['/place-picker'])
+        return;
+    }
+    else {
+      Swal.fire({
+        title: "No Date Selected",
+        text: "Please select a date before proceeding",
+        icon: "warning"
+      })
+    }
+      // console.log(this.date?.nativeElement.value)
+    // this.router.navigate(['/place-picker'])
   }
 }
