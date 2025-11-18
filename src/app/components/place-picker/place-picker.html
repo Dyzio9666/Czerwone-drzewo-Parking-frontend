@@ -8,6 +8,7 @@
     class="parking-spot"
     [class.selected]="place.clicked === true"
     [class.taken]="place.status === false && place.clicked === false"
+    
     (click)="selectPlace(place.id   )">
         
         <p>{{place.id}}</p>
@@ -26,8 +27,12 @@
         <div class="legend-item">
         <span class="spot-example selected"></span> Twój wybór
         </div>
+        
         </div>
     <button class="confirm-button" (click)="takePlace()">Potwierdź wybór</button>
     </div>
+     @if (adminFlag) {
+        <button class="admin-btn" (click)="adminRedirect()">panel admina</button>
+    }
 </body>
 

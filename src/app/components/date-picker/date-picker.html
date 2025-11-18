@@ -10,4 +10,7 @@
 
         <button (click)="toggle()">Send date</button>
     </div>
+    @if (adminFlag) {
+       <button class="admin-btn" (click)="adminRedirect()">panel admina</button>
+    }
 </body>

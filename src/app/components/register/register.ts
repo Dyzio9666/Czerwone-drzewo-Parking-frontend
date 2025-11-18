@@ -3,7 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { authService } from '../../services/authservice';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ import { RouterLink } from "@angular/router";
 })
 export class Register {
   constructor(
-    private readonly authService : authService
+    private readonly authService : authService,
+    private readonly router : Router
   ){
 
   }
@@ -23,7 +25,20 @@ export class Register {
 
   register (){
       if(this.password === this.password1){
-        this.authService.register(this.username, this.password)
+        try {
+          this.authService.register(this.username, this.password)
+          Swal.fire({
+          title: "Registered Succesfully",
+          text: "You have registered succesfully, you can now login",
+          icon: "success"
+          })
+          this.router.navigate(['/'])
+        } catch (e){
+          console.log(e)
+        }
+        
       }
+        
+      
   }
 }

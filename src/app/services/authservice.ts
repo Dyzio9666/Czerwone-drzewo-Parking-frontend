@@ -7,7 +7,8 @@ interface Apiresponse{
     
     accessToken : string,
     refreshToken : string,
-    username : string
+    username : string,
+    role : string
 }
 @Injectable({
     providedIn : 'root'
@@ -47,8 +48,10 @@ async loginUser(username: string, password: string): Promise<boolean> {
           // Ten kod wykona się, jeśli zapytanie się uda
           const username = response.username;
           const accessToken = response.accessToken;
-
-          if (username && accessToken) {
+          const role = response.role;  
+          console.log(role)
+          if (username && accessToken && role) {
+            localStorage.setItem('role', role);
             localStorage.setItem('user', username);
             localStorage.setItem('accessToken', accessToken);
             this.currentSubject.next(username);

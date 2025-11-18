@@ -95,3 +95,22 @@ button:active {
   transform: scale(0.98);
   background-color: #0062c4;
 }
+.admin-btn {
+  position: absolute; /* Kluczowe: pozwala umieścić element niezależnie od Flexboxa */
+  top: 20px;          /* Odległość od góry */
+  right: 20px;        /* Odległość od prawej (zmień na 'left', jeśli chcesz lewy róg) */
+  width: auto;        /* Resetujemy szerokość 100% z ogólnego stylu button */
+  margin-top: 0;      /* Usuwamy margines górny z ogólnego stylu */
+  
+  /* Opcjonalnie: Zmniejszenie paddingu, żeby przycisk był zgrabniejszy */
+  padding: 10px 16px; 
+  font-size: 14px;
+  
+  /* Opcjonalnie: Inny kolor dla odróżnienia (np. szary lub czarny) */
+  background-color: #333; 
+}
+
+.admin-btn:hover {
+  /* Opcjonalnie: ciemniejszy hover dla admina */
+  background-color: #000; 
+}
