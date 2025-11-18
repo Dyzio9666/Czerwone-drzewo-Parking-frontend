@@ -1,0 +1,113 @@
+/* Główny kontener - centruje treść i nadaje marginesy */
+.admin-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Roboto', sans-serif; /* Standard dla Angular Material */
+}
+
+/* Header sekcji */
+.page-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 300; /* Cieńszy font wygląda nowocześniej */
+  color: #333;
+  margin: 0;
+}
+
+.page-header .subtitle {
+  color: #757575;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+/* Karta imitująca papier */
+.content-card {
+  background: #fff;
+  border-radius: 12px; /* Nowoczesne, większe zaokrąglenie */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Bardzo miękki cień */
+  overflow: hidden; /* Żeby hover nie wychodził poza rogi */
+}
+
+.list-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Stylizacja elementu listy */
+.reservation-item {
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.reservation-item:last-child {
+  border-bottom: none;
+}
+
+.reservation-item:hover {
+  background-color: #fafafa; /* Subtelne podświetlenie przy najechaniu */
+}
+
+/* Typografia wewnątrz listy */
+.user-name {
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.meta-info {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Odstęp między ikonką a tekstem */
+}
+
+.tiny-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+}
+
+.meta-separator {
+  margin: 0 10px;
+  color: #ddd;
+}
+
+.avatar-icon {
+  color: #bbb; /* Neutralny kolor awatara */
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+/* Stan pusty */
+.empty-state {
+  padding: 48px;
+  text-align: center;
+  color: #999;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}

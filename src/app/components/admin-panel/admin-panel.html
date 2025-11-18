@@ -3,9 +3,17 @@
     <header>
         <h1>Panel admina</h1>
     </header>
-
     <div>
-        zobacz rezerwacje dokonane przez uzytkownikow
+    <mat-list>
+        @for (reservation of reservations; track reservation) {
+        <mat-list-item>
+            <span matListItemTitle>wykonana przez : {{reservation.made_by}} </span>
+            <span matListItemLine>data : {{reservation.date}}</span>
+            <span matListItemLine>przez : {{reservation.made_by}}</span>
+            <span matListItemLine>id miejsca {{reservation.placeNumber}}</span>
+            <button>Usun rezerwacje</button>
+        </mat-list-item>
+    }   
+    </mat-list>
     </div>
-
 </body>
