@@ -1,113 +1,114 @@
-/* Główny kontener - centruje treść i nadaje marginesy */
-.admin-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: 'Roboto', sans-serif; /* Standard dla Angular Material */
-}
-
-/* Header sekcji */
-.page-header {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.page-header h1 {
-  font-size: 2rem;
-  font-weight: 300; /* Cieńszy font wygląda nowocześniej */
-  color: #333;
+/* 1. Globalne ustawienia kontenera i typografii */
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #f9f9f9; /* Lekkie tło dla kontrastu z kartami */
   margin: 0;
+  padding: 20px;
+  color: #333;
 }
 
-.page-header .subtitle {
-  color: #757575;
-  font-size: 0.95rem;
-  margin-top: 8px;
+/* Ograniczenie szerokości dla czytelności */
+body > div {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Karta imitująca papier */
-.content-card {
-  background: #fff;
-  border-radius: 12px; /* Nowoczesne, większe zaokrąglenie */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Bardzo miękki cień */
-  overflow: hidden; /* Żeby hover nie wychodził poza rogi */
-}
-
-.list-header {
-  padding: 16px 24px;
-  border-bottom: 1px solid #f0f0f0;
-  color: #888;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
-
-/* Stylizacja elementu listy */
-.reservation-item {
-  transition: background-color 0.2s ease;
-  border-bottom: 1px solid #f5f5f5;
-}
-
-.reservation-item:last-child {
-  border-bottom: none;
-}
-
-.reservation-item:hover {
-  background-color: #fafafa; /* Subtelne podświetlenie przy najechaniu */
-}
-
-/* Typografia wewnątrz listy */
-.user-name {
-  font-weight: 500;
-  color: #2c3e50;
-  font-size: 1rem;
-}
-
-.meta-info {
-  display: flex;
-  align-items: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* Odstęp między ikonką a tekstem */
-}
-
-.tiny-icon {
-  font-size: 16px;
-  width: 16px;
-  height: 16px;
-  opacity: 0.6;
-}
-
-.meta-separator {
-  margin: 0 10px;
-  color: #ddd;
-}
-
-.avatar-icon {
-  color: #bbb; /* Neutralny kolor awatara */
-  font-size: 28px;
-  width: 28px;
-  height: 28px;
-}
-
-/* Stan pusty */
-.empty-state {
-  padding: 48px;
+/* 2. Stylizacja Nagłówka */
+header {
   text-align: center;
-  color: #999;
+  margin-bottom: 40px;
 }
 
-.empty-state mat-icon {
-  font-size: 48px;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 16px;
-  opacity: 0.5;
+header h1 {
+  font-weight: 300; /* Cieńszy, nowoczesny font */
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* 3. Stylizacja Listy jako "Karty" 
+   Ponieważ mat-list jest w pętli, traktujemy każdą listę jako osobny boks */
+mat-list {
+  background: #ffffff;
+  border-radius: 12px; /* Miękkie rogi */
+  padding: 20px;
+  margin-bottom: 16px; /* Odstęp między rezerwacjami */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Bardzo subtelny cień */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block; /* Upewniamy się, że zachowuje się jak blok */
+}
+
+/* Efekt uniesienia przy najechaniu */
+mat-list:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Układ wewnętrzny elementu (Flexbox) */
+mat-list-item {
+  display: flex;
+  flex-wrap: wrap; /* Pozwala elementom zawijać się na mobilkach */
+  justify-content: space-between; /* Tekst po lewej, przycisk po prawej */
+  align-items: center;
+  width: 100%;
+}
+
+/* Grupowanie tekstu (tytuł i linie) */
+/* Ponieważ nie możemy dodać diva w HTML, musimy polegać na domyślnym zachowaniu,
+   ale upewnijmy się, że button nie rozbija tekstu */
+
+/* 5. Typografia tytułu (wykonana przez) */
+span[matListItemTitle] {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+/* 6. Stylizacja linii szczegółów (data, id miejsca) */
+span[matListItemLine] {
+  display: block;
+  font-size: 0.9rem;
+  color: #757575;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* Dodanie ikonek "z powietrza" za pomocą pseudo-elementów, 
+   aby ożywić tekst bez zmiany HTML */
+
+/* Data */
+
+/* 7. Przycisk "Usuń rezerwacje" */
+button {
+  background-color: transparent;
+  border: 1px solid #e57373; /* Czerwona ramka */
+  color: #d32f2f;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 10px; /* Odstęp na mniejszych ekranach */
+}
+
+/* Hover na przycisku */
+button:hover {
+  background-color: #d32f2f;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+/* Responsywność: Na szerokich ekranach przycisk po prawej, na małych pod spodem */
+@media (min-width: 600px) {
+  button {
+    margin-top: 0; /* Reset marginesu */
+    margin-left: auto; /* Wypycha przycisk maksymalnie w prawo */
+  }
 }

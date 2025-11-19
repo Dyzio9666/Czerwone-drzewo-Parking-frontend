@@ -5,7 +5,7 @@ export interface reservation{
     id : number;
     made_by : string;
     date : string;  
-    placeNumber : number;
+    placeChoosen : number;
 }
 @Injectable({
     providedIn : 'root'
@@ -17,13 +17,11 @@ export class adminApiService {
 
     }
     reservations : reservation[] = [];
-    getAllReservations(){
-         this.httpClient.get<reservation[]>('http://localhost:3000/admin/reservations').subscribe(
-            response =>{
-                this.reservations = response;
-                console.log(this.reservations)
-            }
-        )
-        return this.reservations;   
+     getAllReservations(){
+        // let reservation = null;
+          return this.httpClient.get<reservation[]>('http://localhost:3000/admin/reservations');
+    }
+    deleteReservation(reservationID : number){
+        return this.httpClient.delete('http://localhost:3000/admin/delete-reservation' , {body : {id : reservationID}});
     }
 }

@@ -19,15 +19,28 @@ export class AdminPanel implements OnInit {
   }
   reservations : reservation[]  = [];
 
-
-
+  loadPage(){
+    this.adminApiService.getAllReservations().subscribe((res : reservation[]) =>{
+          this.reservations = res;
+      })
+  }
+  
   ngOnInit(): void {
       if(localStorage.getItem('role') !== 'admin'){
           this.router.navigate(['/'])
       }
+      this.loadPage();
       
-      this.reservations = this.adminApiService.getAllReservations();  
       console.log(this.reservations)
      
+  }
+  deleteReservation(reservationID : number){
+    this.adminApiService.deleteReservation(reservationID).subscribe({
+      next : (res) =>{
+        // console.log('Reservation deleted successfully');
+        this.loadPage();
+      }
+    });
+    // this.loadPage();
   }
 }
