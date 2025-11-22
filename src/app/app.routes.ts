@@ -4,6 +4,7 @@ import { DatePicker } from './components/date-picker/date-picker';
 import { Register } from './components/register/register';
 import { PlacePicker } from './components/place-picker/place-picker';
 import { AdminPanel } from './components/admin-panel/admin-panel';
+import { MyReservations } from './components/my-reservations/my-reservations';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         path : 'admin',
         component : AdminPanel
+    },
+    {
+        path: 'my-reservations',
+        component: MyReservations
     }
 ];

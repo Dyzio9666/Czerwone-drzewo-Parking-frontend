@@ -120,6 +120,9 @@ export class PlacePicker implements OnDestroy , OnInit{
   adminRedirect(){
     this.router.navigate(['/admin'])
   }
+  reserRedirect(){
+    this.router.navigate(['/my-reservations'])
+  }
   ngOnDestroy(): void {
     if(this.dateSubsription){
       this.dateSubsription.unsubscribe();

@@ -98,7 +98,7 @@ button:active {
 .admin-btn {
   position: absolute; /* Kluczowe: pozwala umieścić element niezależnie od Flexboxa */
   top: 20px;          /* Odległość od góry */
-  right: 20px;        /* Odległość od prawej (zmień na 'left', jeśli chcesz lewy róg) */
+  left: 20px;        /* Odległość od prawej (zmień na 'left', jeśli chcesz lewy róg) */
   width: auto;        /* Resetujemy szerokość 100% z ogólnego stylu button */
   margin-top: 0;      /* Usuwamy margines górny z ogólnego stylu */
   

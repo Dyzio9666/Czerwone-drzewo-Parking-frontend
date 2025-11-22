@@ -1,0 +1,20 @@
+
+<Body>
+
+    <header> Twoje rezerwacje</header>
+    <div>
+        @for (reservation of reservations ; track reservation) {
+        <mat-list>
+
+        <mat-list-item>
+            
+            <span matListItemLine>data : {{reservation.date}}</span>
+            
+            <span matListItemLine>id miejsca {{reservation.placeChoosen}}</span>
+            <button (click)="deleteReservation(reservation.id)" >Usun rezerwacje</button>
+        </mat-list-item>
+        </mat-list>
+        }   
+    
+    </div>
+</Body>
