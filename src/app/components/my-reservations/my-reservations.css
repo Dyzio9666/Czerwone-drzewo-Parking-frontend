@@ -1,4 +1,3 @@
-/* 1. Tło i ogólne ustawienia strony */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #f3f4f6;
@@ -13,7 +12,6 @@ body > div {
   margin: 0 auto;
 }
 
-/* 2. Nagłówek (zostawiamy ten ładny styl) */
 header {
   font-size: 2rem;
   font-weight: 800;
@@ -27,21 +25,19 @@ header {
   width: 100%;
 }
 
-/* 3. Karta listy */
 mat-list {
   background: #ffffff;
   border-radius: 12px;
-  margin-bottom: 16px; /* Odstęp między kartami */
+  margin-bottom: 16px; 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
               0 2px 4px -1px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(229, 231, 235, 0.5);
   position: relative;
-  overflow: hidden; /* Dla paska bocznego */
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  padding: 0; /* Resetujemy padding kontenera */
+  padding: 0; 
 }
 
-/* Niebieski pasek statusu po lewej */
 mat-list::before {
   content: '';
   position: absolute;
@@ -58,50 +54,40 @@ mat-list:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* 4. Wnętrze elementu (NAPRAWA WIDOCZNOŚCI) */
 mat-list-item {
-  /* Grid: 1 kolumna na tekst (rozciągliwa), 1 na przycisk (dopasowana) */
   display: grid !important; 
   grid-template-columns: 1fr auto; 
-  /* Ważne! Angular domyślnie blokuje wysokość, musimy to odblokować: */
   height: auto !important; 
-  min-height: 80px; /* Minimalna wysokość dla estetyki */
-  padding: 16px 20px !important; /* Wymuszamy padding */
-  gap: 5px 20px; /* Odstęp pionowy tekstów / poziomy od przycisku */
-  align-items: center; /* Centrowanie pionowe zawartości */
+  min-height: 80px; 
+  padding: 16px 20px !important; 
+  gap: 5px 20px; 
+  align-items: center; 
 }
 
-/* Aby Grid zadziałał poprawnie wewnątrz Angular Material, 
-   musimy upewnić się, że wewnętrzne kontenery nie psują układu.
-   Jeśli Angular dodaje div.mat-list-item-content, powyższy grid zadziała na niego,
-   jeśli ten styl jest w globalnym CSS. */
 
-/* 5. Stylizacja tekstów */
 span[matListItemLine] {
   display: block;
-  grid-column: 1; /* Teksty zawsze w lewej kolumnie */
+  grid-column: 1; 
   line-height: 1.4;
 }
 
-/* Pierwsza linia (Data) */
 span[matListItemLine]:first-of-type {
   font-size: 1.1rem;
   font-weight: 700;
   color: #111827;
 }
 
-/* Druga linia (ID) */
 span[matListItemLine]:last-of-type {
   font-size: 0.9rem;
   color: #6b7280;
   font-weight: 500;
-  margin-top: 4px; /* Lekki odstęp od daty */
+  margin-top: 4px;
 }
 
-/* 6. Przycisk - teraz zawsze widoczny */
+
 button {
-  grid-column: 2; /* Prawa kolumna */
-  grid-row: 1 / -1; /* Rozciągnij się na wysokość wszystkich wierszy tekstu */
+  grid-column: 2; 
+  grid-row: 1 / -1; 
   
   background-color: #fee2e2;
   color: #dc2626;
@@ -113,7 +99,7 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  height: fit-content; /* Nie rozciągaj przycisku na siłę w pionie */
+  height: fit-content; 
   align-self: center;
 }
 
@@ -123,10 +109,8 @@ button:hover {
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-/* 7. Wersja mobilna */
 @media (max-width: 600px) {
   mat-list-item {
-    /* Zmieniamy układ na jedną kolumnę */
     grid-template-columns: 1fr;
     text-align: left;
     gap: 10px;
@@ -138,18 +122,17 @@ button:hover {
   }
 
   button {
-    grid-column: 1; /* Przycisk spada pod tekst */
+    grid-column: 1; 
     grid-row: auto;
-    width: 100%; /* Na całą szerokość */
+    width: 100%;
     margin-top: 10px;
     padding: 12px;
   }
   
-  /* Opcjonalnie: pasek na górze zamiast z boku na mobile */
   mat-list::before {
     width: 0;
   }
   mat-list {
-    border-left: 5px solid #3b82f6; /* Prostszy sposób na pasek */
+    border-left: 5px solid #3b82f6; 
   }
 }

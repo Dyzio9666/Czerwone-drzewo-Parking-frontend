@@ -1,115 +1,100 @@
-/* --- Globalne style i centrowanie --- */
 body, html {
   height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f4f7f6; /* Lekkie tło, aby karta się wyróżniała */
+  background-color: #f4f7f6; 
 }
 
-/* Używamy 'grid' do wyśrodkowania karty idealnie na środku strony */
 body {
   display: grid;
   place-items: center;
 }
 
-/* --- Karta parkingu --- */
 .parking-layout-card {
   background-color: #ffffff;
-  border-radius: 16px; /* Zaokrąglenia jak na obrazku */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Subtelny cień dla głębi */
+  border-radius: 16px; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); 
   padding: 24px 32px;
   width: 90%;
-  max-width: 480px; /* Ograniczenie szerokości na dużych ekranach */
-  box-sizing: border-box; /* Ważne dla poprawnego liczenia paddingu */
+  max-width: 480px; 
+  box-sizing: border-box; 
 }
 
-/* Tytuł */
 .parking-layout-card h2 {
   text-align: center;
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem; 
   font-weight: 600;
   color: #333;
   margin-top: 0;
   margin-bottom: 24px;
 }
 
-/* --- Siatka miejsc parkingowych --- */
 .parking-grid {
   display: grid;
-  /* Tworzymy 5 równych kolumn, jak na projekcie */
+
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px; /* Odstępy między kafelkami */
+  gap: 12px; 
   margin-bottom: 24px;
 }
 
-/* --- Kafelek miejsca parkingowego --- */
 .parking-spot {
   display: grid;
   place-items: center;
-  border: 2px solid #e0e0e0; /* Domyślna ramka dla 'Wolne' */
-  border-radius: 8px; /* Zaokrąglenie kafelków */
-  aspect-ratio: 1 / 1; /* Utrzymuje kwadratowy kształt */
+  border: 2px solid #e0e0e0; 
+  border-radius: 8px; 
+  aspect-ratio: 1 / 1; 
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-weight: 600;
   font-size: 1.1rem;
   color: #555;
-  user-select: none; /* Zapobiega zaznaczaniu tekstu przy klikaniu */
+  user-select: none; 
 }
 
-/* Usuwamy domyślny margines z paragrafu wewnątrz kafelka */
 .parking-spot p {
   margin: 0;
 }
 
-/* --- Stany kafelków (UX) --- */
-/* Stan :hover dla lepszej interakcji */
+
 .parking-spot:hover {
   background-color: #f9f9f9;
   transform: scale(1.05);
 }
 
-/* Poniższe klasy musiałyby być dodawane dynamicznie (np. przez JavaScript)
-  w zależności od stanu miejsca lub wyboru użytkownika.
-*/
 
-/* Styl dla miejsca 'Zajęte' */
 .parking-spot.taken {
   background-color: #f0f0f0;
   border-color: #dcdcdc;
   color: #aaa;
-  cursor: not-allowed; /* Wskazuje, że miejsce jest niedostępne */
+  cursor: not-allowed; 
 }
 
 .parking-spot.taken:hover {
   background-color: #f0f0f0;
-  transform: none; /* Wyłączamy efekt hover dla zajętych */
+  transform: none; 
 }
 
-/* Styl dla miejsca 'Twój wybór' */
 .parking-spot.selected {
-  background-color: #3b82f6; /* Kolor z przycisku */
+  background-color: #3b82f6; 
   border-color: #3b82f6;
   color: #ffffff;
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-/* Styl dla miejsca 'Twój wybór' */
 .parking-spot.vip {
-  background-color: #fbbf24; /* Kolor z przycisku */
+  background-color: #fbbf24; 
   border-color: #fbbf24;
   color: #ffffff;
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-/* --- Legenda --- */
 .legend {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Na mniejszych ekranach legenda się zawinie */
+  flex-wrap: wrap; 
   gap: 16px;
   margin-bottom: 24px;
   font-size: 0.9rem;
@@ -119,10 +104,9 @@ body {
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px; /* Odstęp między kwadracikiem a tekstem */
+  gap: 8px; 
 }
 
-/* Kwadracik w legendzie */
 .spot-example {
   width: 18px;
   height: 18px;
@@ -148,14 +132,13 @@ body {
     background-color: #fbbf24;
     border: 2px solid #fbbf24;
 }
-/* --- Przycisk potwierdzenia --- */
 .confirm-button {
   width: 100%;
   padding: 14px;
   font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: #3b82f6; /* Ten sam niebieski co na obrazku */
+  background-color: #3b82f6; 
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -168,41 +151,36 @@ body {
 }
 .admin-btn {
     color: white    ;
-  position: absolute; /* Kluczowe: pozwala umieścić element niezależnie od Flexboxa */
-  top: 20px;          /* Odległość od góry */
-  left: 20px;        /* Odległość od prawej (zmień na 'left', jeśli chcesz lewy róg) */
-  width: auto;        /* Resetujemy szerokość 100% z ogólnego stylu button */
-  margin-top: 0;      /* Usuwamy margines górny z ogólnego stylu */
+  position: absolute;
+  top: 20px;        
+  left: 20px;        
+  width: auto;        
+  margin-top: 0;      
     border: none;
   border-radius: 10px;  
-  /* Opcjonalnie: Zmniejszenie paddingu, żeby przycisk był zgrabniejszy */
   padding: 10px 16px; 
   font-size: 14px;
   
-  /* Opcjonalnie: Inny kolor dla odróżnienia (np. szary lub czarny) */
   background-color: #333; 
 }
 .reser-btn {
     color: white    ;
-  position: absolute; /* Kluczowe: pozwala umieścić element niezależnie od Flexboxa */
-  top: 20px;          /* Odległość od góry */
-  right: 20px;        /* Odległość od prawej (zmień na 'left', jeśli chcesz lewy róg) */
-  width: auto;        /* Resetujemy szerokość 100% z ogólnego stylu button */
-  margin-top: 0;      /* Usuwamy margines górny z ogólnego stylu */
+  position: absolute; 
+  top: 20px;        
+  right: 20px;     
+  width: auto;        
+  margin-top: 0;    
     border: none;
   border-radius: 10px;  
-  /* Opcjonalnie: Zmniejszenie paddingu, żeby przycisk był zgrabniejszy */
   padding: 10px 16px; 
   font-size: 14px;
   
-  /* Opcjonalnie: Inny kolor dla odróżnienia (np. szary lub czarny) */
   background-color: #333; 
 }
 .admin-btn:hover {
-  /* Opcjonalnie: ciemniejszy hover dla admina */
   background-color: #000; 
 }
 .reser-btn:hover {
-  /* Opcjonalnie: ciemniejszy hover dla admina */
+
   background-color: #000; 
 }
