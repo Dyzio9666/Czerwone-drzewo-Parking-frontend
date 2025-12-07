@@ -4,4 +4,4 @@ Wspomoglem sie LLM przy tworzeniu CSS (nie mam kompletnie duszy artysty i ladny 
 rozwiazywaniu jakis bagow jak juz samemu mialem problem , ale to jedynie zeby zapytac sie o przyczyne problemu 
 
 Do uruchomienia musimy miec Angulara , pobrana bibloteke Angular Materials ,Sweetalert2  
-uruchomienie przez ng serve
+uruchomienie przez najpiew npm install potem ng serve(potrzebne node oraz angular cli)
